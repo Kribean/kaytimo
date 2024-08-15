@@ -1,5 +1,6 @@
 // pages/account.js
 import { CardActivity } from '@/components/CardActivity';
+import { Footer } from '@/components/Footer';
 import { Navbar } from '@/components/Navbar';
 import React from 'react';
 
@@ -32,6 +33,7 @@ const ActivitiesPage = () => {
 <CardActivity/>
 <CardActivity/>
 </section>
+<Footer/>
     </div>
   );
 };
