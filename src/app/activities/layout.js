@@ -1,0 +1,12 @@
+
+
+export const metadata = {
+  title: "Activités Martinique",
+  description: "Les activités aux trois ilets",
+};
+
+export default function ActivitiesLayout({ children }) {
+  return (
+      <section>{children}</section>
+  );
+}
