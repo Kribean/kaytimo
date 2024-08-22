@@ -6,6 +6,7 @@ import { ButtonTheme } from '@/components/ButtonTheme';
 import { CardActivity } from '@/components/CardActivity';
 import { Footer } from '@/components/Footer';
 import { Navbar } from '@/components/Navbar';
+import data from "../../../public/data/data.json"
 
 const ActivitiesPage = () => {
   return (
@@ -36,6 +37,7 @@ const ActivitiesContent = () => {
     { acti: 'Shopping', imgsrc: "../image/shopping.png", indx: 4 },
     { acti: 'Activité Atypique', imgsrc: "../image/insolite.png", indx: 5 }
   ];
+  console.log(data,"okkkkkkkk")
 
   return (
     <>
@@ -49,9 +51,22 @@ const ActivitiesContent = () => {
       </section>
 
       <section className='flex flex-wrap gap-4'>
-        <CardActivity />
-        <CardActivity />
-        <CardActivity />
+{
+  data.activities.map((activity,index)=>{
+    return <CardActivity       
+    key={activity.index}
+    name={activity.name}
+    imgSrc={activity.imgSrc}
+    approxDistance={activity?.details.approx_distance}
+    approxTime={activity?.details.approx_time}
+    carRequired={activity?.details.car_required}
+    targetAudience={activity.target_audience}
+    suitableFor={activity?.details.suitable_for}
+    description={activity?.details.description}
+  />
+
+  })
+}
       </section>
     </>
   );
