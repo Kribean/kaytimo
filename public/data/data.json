@@ -1,70 +1,74 @@
 {
-    "activities": [
-      {
-        "name": "Nightlife Activity",
-        "imgSrc": "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-        "index": 1,
-        "details": {
-          "approx_distance": "10 km",
-          "approx_time": "15 minutes",
-          "car_required": true,
-          "target_audience": "Tourists from mainland France",
-          "suitable_for": ["Young adults", "Solo travelers", "Groups of friends"],
-          "description": "Lively evenings with live music, bars, and clubs to enjoy the vibrant nightlife in Martinique."
-        }
-      },
-      {
-        "name": "Restaurant",
-        "imgSrc": "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-        "index": 2,
-        "details": {
-          "approx_distance": "2 km",
-          "approx_time": "5 minutes",
-          "car_required": false,
-          "target_audience": "Tourists from mainland France",
-          "suitable_for": ["Families", "Couples", "Elderly people"],
-          "description": "A variety of restaurants offering local and international dishes, perfect for a family dinner or a romantic evening."
-        }
-      },
-      {
-        "name": "Beaches",
-        "imgSrc": "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-        "index": 3,
-        "details": {
-          "approx_distance": "1 km",
-          "approx_time": "2 minutes",
-          "car_required": false,
-          "target_audience": "Tourists from mainland France",
-          "suitable_for": ["Families", "Young adults", "Solo travelers"],
-          "description": "Enjoy the beautiful sandy beaches, ideal for relaxing, swimming, or engaging in water activities."
-        }
-      },
-      {
-        "name": "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-        "imgSrc": "../image/shopping.png",
-        "index": 4,
-        "details": {
-          "approx_distance": "3 km",
-          "approx_time": "7 minutes",
-          "car_required": false,
-          "target_audience": "Tourists from mainland France",
-          "suitable_for": ["Families", "Young adults", "Solo travelers"],
-          "description": "Explore local shops and markets for souvenirs, crafts, and typical Martinique products."
-        }
-      },
-      {
-        "name": "Unusual Activity",
-        "imgSrc": "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-        "index": 5,
-        "details": {
-          "approx_distance": "15 km",
-          "approx_time": "20 minutes",
-          "car_required": true,
-          "target_audience": "Tourists from mainland France",
-          "suitable_for": ["Young adults", "Solo travelers", "Adventure enthusiasts"],
-          "description": "Unique activities such as cave visits, paragliding, or immersive experiences that are exclusive to Martinique."
-        }
+  "activities": [
+    {
+      "name": "Nightlife Activity",
+      "name_fr": "Activité Nocturne",
+      "imgSrc": "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
+      "index": 1,
+      "details": {
+        "approx_distance": "10 km",
+        "approx_time": "15 minutes",
+        "car_required": true,
+        "target_audience": "Touristes de la France métropolitaine",
+        "suitable_for": ["Jeunes adultes", "Voyageurs seuls", "Groupes d'amis"],
+        "description": "Soirées animées avec musique live, bars et clubs pour profiter de la vie nocturne vibrante de la Martinique."
       }
-    ]
-  }
-  
+    },
+    {
+      "name": "Restaurant",
+      "name_fr": "Restaurant",
+      "imgSrc": "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
+      "index": 2,
+      "details": {
+        "approx_distance": "2 km",
+        "approx_time": "5 minutes",
+        "car_required": false,
+        "target_audience": "Touristes de la France métropolitaine",
+        "suitable_for": ["Familles", "Couples", "Personnes âgées"],
+        "description": "Une variété de restaurants proposant des plats locaux et internationaux, parfaits pour un dîner en famille ou une soirée romantique."
+      }
+    },
+    {
+      "name": "Beaches",
+      "name_fr": "Plages",
+      "imgSrc": "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
+      "index": 3,
+      "details": {
+        "approx_distance": "1 km",
+        "approx_time": "2 minutes",
+        "car_required": false,
+        "target_audience": "Touristes de la France métropolitaine",
+        "suitable_for": ["Familles", "Jeunes adultes", "Voyageurs seuls"],
+        "description": "Profitez des belles plages de sable, idéales pour se détendre, nager ou pratiquer des activités nautiques."
+      }
+    },
+    {
+      "name": "Shopping",
+      "name_fr": "Shopping",
+      "imgSrc": "../image/shopping.png",
+      "index": 4,
+      "details": {
+        "approx_distance": "3 km",
+        "approx_time": "7 minutes",
+        "car_required": false,
+        "target_audience": "Touristes de la France métropolitaine",
+        "suitable_for": ["Familles", "Jeunes adultes", "Voyageurs seuls"],
+        "description": "Explorez les boutiques et marchés locaux pour des souvenirs, des objets artisanaux et des produits typiques de la Martinique."
+      }
+    },
+    {
+      "name": "Unusual Activity",
+      "name_fr": "Activité Atypique",
+      "imgSrc": "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
+      "index": 5,
+      "details": {
+        "approx_distance": "15 km",
+        "approx_time": "20 minutes",
+        "car_required": true,
+        "target_audience": "Touristes de la France métropolitaine",
+        "suitable_for": ["Jeunes adultes", "Voyageurs seuls", "Amateurs d'aventure"],
+        "description": "Activités uniques comme la visite de grottes, le parapente, ou des expériences immersives exclusives à la Martinique."
+      }
+    }
+  ]
+}

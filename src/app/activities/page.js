@@ -1,6 +1,6 @@
 "use client"
 
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { ButtonTheme } from '@/components/ButtonTheme';
 import { CardActivity } from '@/components/CardActivity';
@@ -29,6 +29,8 @@ const ActivitiesContent = () => {
   const searchParams = useSearchParams();
   const search = searchParams.get('query');
   console.log(search, "koooooo");
+  const [dataAct,setDataAct]=useState([]);
+  const [tabIndxRemov,setTabIndxRemov]=useState([])
 
   const sectionElement = [
     { acti: 'Activité Nocturne', imgsrc: "../image/nightlife.png", indx: 1 },
@@ -37,25 +39,35 @@ const ActivitiesContent = () => {
     { acti: 'Shopping', imgsrc: "../image/shopping.png", indx: 4 },
     { acti: 'Activité Atypique', imgsrc: "../image/insolite.png", indx: 5 }
   ];
-  console.log(data,"okkkkkkkk")
+
+  useEffect(()=>{
+    setDataAct(data);
+if(search){
+  const dataFilter = data?.activities.filter((e)=>{return e.index===parseInt(search)});
+  setDataAct(dataFilter)
+}
+  },[])
+
 
   return (
     <>
       <section className='flex flex-col m-4'>
         <h2 className='text-xl font-bold'>Filtre</h2>
         <div className='flex flex-wrap gap-2 items-center w-full'>
-          {sectionElement.map((e, index) => (
-            <ButtonTheme key={index} acti={e.acti} indx={e.indx} />
-          ))}
+          {sectionElement.map((e, index) => {
+            return <ButtonTheme key={index} acti={e.acti} indx={e.indx} setDataAct={setDataAct} dataAct={dataAct} initActiv={e.indx===parseInt(search?search:9999)?true:false} />
+          }
+            
+          )}
         </div>
       </section>
 
-      <section className='flex flex-wrap gap-4'>
+      <section className='flex flex-wrap gap-4 min-h-screen justify-center items-center m-4 '>
 {
-  data.activities.map((activity,index)=>{
+  dataAct?.map((activity,index)=>{
     return <CardActivity       
-    key={activity.index}
-    name={activity.name}
+    key={index}
+    name_fr={activity.name_fr}
     imgSrc={activity.imgSrc}
     approxDistance={activity?.details.approx_distance}
     approxTime={activity?.details.approx_time}
