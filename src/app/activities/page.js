@@ -28,9 +28,7 @@ const ActivitiesPage = () => {
 const ActivitiesContent = () => {
   const searchParams = useSearchParams();
   const search = searchParams.get('query');
-  console.log(search, "koooooo");
   const [dataAct,setDataAct]=useState([]);
-  const [tabIndxRemov,setTabIndxRemov]=useState([])
 
   const sectionElement = [
     { acti: 'Activité Nocturne', imgsrc: "../image/nightlife.png", indx: 1 },
@@ -45,6 +43,8 @@ const ActivitiesContent = () => {
 if(search){
   const dataFilter = data?.activities.filter((e)=>{return e.index===parseInt(search)});
   setDataAct(dataFilter)
+}else{
+  setDataAct(data?.activities)
 }
   },[])
 

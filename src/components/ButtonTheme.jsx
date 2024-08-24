@@ -26,7 +26,7 @@ export const ButtonTheme = ({ acti, indx,dataAct,setDataAct,initActiv }) => {
         changeTab()
       }}
     >
-      {acti+" "+indx}
+      {acti}
     </button>
   );
 };
