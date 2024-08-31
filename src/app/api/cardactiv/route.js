@@ -24,13 +24,14 @@ export async function POST(req) {
 
     const newCardActiv = await prisma.cardActiv.create({
       data: {
+        type_acti:"sdfs",
         name_fr: body.name_fr,
         imgSrc: body.imgSrc,
         approxDistance: parseFloat(body.approxDistance),
         approxTime: parseFloat(body.approxTime),
         carRequired: body.carRequired,
-        targetAudience: JSON.stringify(body.targetAudience), // Sérialiser en JSON si vous utilisez une chaîne pour le stockage
-        suitableFor: JSON.stringify(body.suitableFor),       // Sérialiser en JSON si vous utilisez une chaîne pour le stockage
+        targetAudience: body.targetAudience, // Sérialiser en JSON si vous utilisez une chaîne pour le stockage
+        suitableFor: body.suitableFor,       // Sérialiser en JSON si vous utilisez une chaîne pour le stockage
         description: body.description,
       },
     });

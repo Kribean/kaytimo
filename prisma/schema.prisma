@@ -5,8 +5,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./db/database.sqlite"
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
 }
 
 generator client {
@@ -14,20 +14,21 @@ generator client {
 }
 
 model User {
-  id    Int    @id @default(autoincrement())
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
   name  String
   email String @unique
   age   Int
 }
 
 model CardActiv {
-  id             Int    @id @default(autoincrement())
+  id             String @id @default(auto()) @map("_id") @db.ObjectId
+  type_acti      String
   name_fr        String
   imgSrc         String
   approxDistance Float
   approxTime     Float
   carRequired    Boolean
-  targetAudience String
-  suitableFor    String
+  targetAudience String[]
+  suitableFor    String[]
   description    String
 }

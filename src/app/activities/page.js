@@ -1,35 +1,10 @@
-"use client"
-
-import React, { Suspense, useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
 import { ButtonTheme } from '@/components/ButtonTheme';
 import { CardActivity } from '@/components/CardActivity';
 import { Footer } from '@/components/Footer';
 import { Navbar } from '@/components/Navbar';
-import data from "../../../public/data/data.json"
+import prisma from '@/lib/prisma';
 
-const ActivitiesPage = () => {
-  return (
-    <div className="flex flex-col min-h-screen bg-base-200">
-      <Navbar/>
-      <div className='flex flex-col w-full justify-center items-center pt-[200px]'>
-        <h1 className='text-5xl font-bold'>Les activités</h1>
-      </div>
-      
-      <Suspense fallback={<div>Loading...</div>}>
-        <ActivitiesContent />
-      </Suspense>
-
-      <Footer/>
-    </div>
-  );
-};
-
-const ActivitiesContent = () => {
-  const searchParams = useSearchParams();
-  const search = searchParams.get('query');
-  const [dataAct,setDataAct]=useState([]);
-
+const ActivitiesPage = async () => {
   const sectionElement = [
     { acti: 'Activité Nocturne', imgsrc: "../image/nightlife.png", indx: 1 },
     { acti: 'Restaurant', imgsrc: "../image/restaurant.png", indx: 2 },
@@ -37,21 +12,16 @@ const ActivitiesContent = () => {
     { acti: 'Shopping', imgsrc: "../image/shopping.png", indx: 4 },
     { acti: 'Activité Atypique', imgsrc: "../image/insolite.png", indx: 5 }
   ];
-
-  useEffect(()=>{
-    setDataAct(data);
-if(search){
-  const dataFilter = data?.activities.filter((e)=>{return e.index===parseInt(search)});
-  setDataAct(dataFilter)
-}else{
-  setDataAct(data?.activities)
-}
-  },[])
-
+  const dataAct = await prisma.CardActiv.findMany();
 
   return (
-    <>
-      <section className='flex flex-col m-4'>
+    <div className="flex flex-col min-h-screen bg-base-200">
+      <Navbar/>
+      <div className='flex flex-col w-full justify-center items-center pt-[200px]'>
+        <h1 className='text-5xl font-bold'>Les activités</h1>
+      </div>
+      
+      {/**<section className='flex flex-col m-4'>
         <h2 className='text-xl font-bold'>Filtre</h2>
         <div className='flex flex-wrap gap-2 items-center w-full'>
           {sectionElement.map((e, index) => {
@@ -60,27 +30,30 @@ if(search){
             
           )}
         </div>
-      </section>
+      </section>*/}
 
       <section className='flex flex-wrap gap-4 min-h-screen justify-center items-center m-4 '>
 {
   dataAct?.map((activity,index)=>{
     return <CardActivity       
     key={index}
+    type_acti={activity.type_acti}
     name_fr={activity.name_fr}
     imgSrc={activity.imgSrc}
-    approxDistance={activity?.details.approx_distance}
-    approxTime={activity?.details.approx_time}
-    carRequired={activity?.details.car_required}
+    approxDistance={activity?.approxDistance}
+    approxTime={activity?.approx_time}
+    carRequired={activity?.car_required}
     targetAudience={activity.target_audience}
-    suitableFor={activity?.details.suitable_for}
-    description={activity?.details.description}
+    suitableFor={activity?.suitable_for}
+    description={activity?.description}
   />
 
   })
 }
       </section>
-    </>
+
+      <Footer/>
+    </div>
   );
 };
 

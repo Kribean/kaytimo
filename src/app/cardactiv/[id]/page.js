@@ -1,14 +1,13 @@
 import { NavbarAdmin } from '@/components/NavbarAdmin';
-import { PrismaClient } from '@prisma/client';
+import prisma from '@/lib/prisma';
 
-const prisma = new PrismaClient();
 
 export default async function CardActivDetail({ params }) {
   const { id } = params;
   
   // Assurez-vous que l'ID est bien converti en entier
   const cardActiv = await prisma.cardActiv.findUnique({
-    where: { id: parseInt(id) },  // parseInt avec base 10 pour s'assurer que l'ID est bien un entier
+    where: { id: id },  // parseInt avec base 10 pour s'assurer que l'ID est bien un entier
   });
 
   if (!cardActiv) {
