@@ -1,10 +1,35 @@
+"use client"
+import { signOut, useSession } from "next-auth/react";
 import { Pacifico } from "next/font/google";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 const pacifico = Pacifico({
   subsets: ["latin"],
   weight: "400", // Définir le poids de la police, 400 pour normal
 });
 
 export const Navbar = () => {
+  const router = useRouter();
+  const [isLog,setIsLog]=useState(false);
+  const logoutFct=()=>{
+    signOut();
+  }
+  const {data:session,status}=useSession();
+  console.log(session,"danzo",status)
+
+
+useEffect(()=>{
+  if(status==="unauthenticated")
+  {
+    router.replace("/login")
+  }else{
+    if(session?.user)
+      {
+        setIsLog(true)
+      }
+  }
+
+},[session])
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
@@ -24,6 +49,10 @@ export const Navbar = () => {
             <li>
               <a href="./account">Mon Compte</a>
             </li>
+            <li>
+                 {!isLog? <a href="/login">Se connecter</a>:
+                  <button onClick={()=>logoutFct()} className="btn btn-error">Déconnexion</button>}
+                </li>
           </ul>
         </div>
         <ul className="menu menu-horizontal px-1">
@@ -36,6 +65,10 @@ export const Navbar = () => {
                 </li>
                 <li>
                   <a href="./account">Mon Compte</a>
+                </li>
+                <li>
+                 {!isLog? <a href="/login">Mon Compte</a>:
+                  <button onClick={()=>logoutFct()} className="btn btn-error">Déconnexion</button>}
                 </li>
               </ul>
             </details>

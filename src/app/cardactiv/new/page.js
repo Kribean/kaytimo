@@ -44,6 +44,7 @@ export default function NewCardActiv() {
         },
         body: JSON.stringify({
           ...formData,
+          imgSrc:"../image/insolite.png",
           targetAudience:formData.targetAudience.split(',').map(str => str.trim()) ,  // Convertit la chaîne en tableau
           suitableFor:formData.suitableFor.split(',').map(str => str.trim()) ,  // Convertit la chaîne en tableau
         }),

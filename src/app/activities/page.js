@@ -13,6 +13,7 @@ const ActivitiesPage = async () => {
     { acti: 'Activité Atypique', imgsrc: "../image/insolite.png", indx: 5 }
   ];
   const dataAct = await prisma.CardActiv.findMany();
+  console.log(dataAct,"boodoom")
 
   return (
     <div className="flex flex-col min-h-screen bg-base-200">
@@ -39,12 +40,12 @@ const ActivitiesPage = async () => {
     key={index}
     type_acti={activity.type_acti}
     name_fr={activity.name_fr}
-    imgSrc={activity.imgSrc}
+    imgSrc={activity.imgSrc || "../image/insolite.png"}
     approxDistance={activity?.approxDistance}
-    approxTime={activity?.approx_time}
-    carRequired={activity?.car_required}
-    targetAudience={activity.target_audience}
-    suitableFor={activity?.suitable_for}
+    approxTime={activity?.approxTime}
+    carRequired={activity?.carRequired}
+    targetAudience={activity.targetAudience}
+    suitableFor={activity?.suitableFor}
     description={activity?.description}
   />
 
