@@ -15,7 +15,6 @@ export const Navbar = () => {
     signOut();
   }
   const {data:session,status}=useSession();
-  console.log(session,"danzo",status)
 
 
 useEffect(()=>{
@@ -34,7 +33,7 @@ useEffect(()=>{
     <div className="navbar bg-base-100">
       <div className="flex-1">
         <a
-          href="./"
+          href="/"
           className={pacifico.className + " btn btn-ghost  text-xl "}
         >
           Kay Ti Mo
@@ -44,10 +43,10 @@ useEffect(()=>{
         <div className=" hidden lg:block w-full menu menu-horizontal">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a href="./activities">Toutes les Activités</a>
+              <a href="/activities/all">Toutes les Activités</a>
             </li>
             <li>
-              <a href="./account">Mon Compte</a>
+              <a href="/account">Mon Compte</a>
             </li>
             <li>
                  {!isLog? <a href="/login">Se connecter</a>:
@@ -61,10 +60,10 @@ useEffect(()=>{
               <summary>Menu</summary>
               <ul className="p-2">
                 <li>
-                  <a href="./activities">Toutes les Activités</a>
+                  <a href="/activities/all">Toutes les Activités</a>
                 </li>
                 <li>
-                  <a href="./account">Mon Compte</a>
+                  <a href="/account">Mon Compte</a>
                 </li>
                 <li>
                  {!isLog? <a href="/login">Mon Compte</a>:

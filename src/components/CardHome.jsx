@@ -4,7 +4,8 @@ export const CardHome = ({title,imgsrc,indx}) => {
     const router= useRouter();
 
     const goToPage = () => {
-      router.push(`/activities?query=${encodeURIComponent(indx)}`);
+      //router.push(`/activities?query=${encodeURIComponent(indx)}`);
+      router.push(`/activities/${indx}`);
     };
   return (
 <div className="flex flex-col w-[400px] shadow-xl h-[200px] items-center justify-center cursor-pointer "

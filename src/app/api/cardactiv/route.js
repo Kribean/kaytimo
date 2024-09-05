@@ -1,20 +1,23 @@
 import { PrismaClient } from '@prisma/client';
+import { NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
 
 export async function GET(req) {
   try {
+    const {searchParams} = new URL(req.url);
+    const actiType = searchParams.get("acti-type")
     // Récupérer tous les enregistrements de CardActiv
-    const cardActivs = await prisma.cardActiv.findMany();
-    return new Response(JSON.stringify(cardActivs), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' },
+    const cardActivs = await prisma.cardActiv.findMany({
+      where:{...(actiType && actiType!=="null" && actiType!=="" && actiType!=="all") && {type_acti:String(actiType)}}
     });
+    return NextResponse.json(cardActivs,{status:200})
+    
   } catch (error) {
-    return new Response(JSON.stringify({ error: 'Erreur lors de la récupération des données.' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    const {searchParams} = new URL(req.url);
+    const actiType = searchParams.get("acti-type")
+    return NextResponse.json({ error: actiType },{status:500})
+    
   }
 }
 

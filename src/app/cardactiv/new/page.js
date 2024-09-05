@@ -36,7 +36,6 @@ export default function NewCardActiv() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log("faya: ",formData)
       const res = await fetch('/api/cardactiv', {
         method: 'POST',
         headers: {
@@ -77,7 +76,7 @@ export default function NewCardActiv() {
           >
             <option value="" disabled>Choisir un type d'activité</option>
             {sectionElement.map((item, index) => (
-              <option key={index} value={item.acti}>
+              <option key={index} value={item.indx}>
                 {item.acti}
               </option>
             ))}
